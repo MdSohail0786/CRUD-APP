@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { bookBaseUrl } from "../../axiosInstance";
 import { MdDelete } from "react-icons/md";
 import { FaPen } from "react-icons/fa";
@@ -26,7 +25,22 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    getAllbookList();
+    let mounted = true;
+
+    const load = async () => {
+      try {
+        await getAllbookList();
+      } catch (error) {
+        // no-op
+        console.log(error);
+      }
+    };
+
+    if (mounted) load();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const handleFormChange = (e) => {

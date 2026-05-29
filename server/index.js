@@ -8,6 +8,7 @@ const cors = require("cors");
 databaseConnection();
 
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
@@ -16,6 +17,8 @@ app.get("/", (req, res) => {
 });
 app.use("/book", bookRouter);
 
-app.listen(9000, () => {
-  console.log("Port listening on 9000");
+const PORT = process.env.PORT || 9000;
+
+app.listen(PORT, () => {
+  console.log(`Port listening on ${PORT}`);
 });
