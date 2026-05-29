@@ -104,13 +104,13 @@ const Home = () => {
   console.log("bookForm", bookForm);
   return (
     <div className="w-full px-5 min-h-[calc(100vh-60px)]:">
-      <div className="w-full grid grid-cols-5 gap-3 my-5">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 my-5">
         <div>
           <label htmlFor="">Book Name</label>
           <input
             type="text"
             placeholder="Book Name"
-            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1  h-8 px-2"
+            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1 h-9 px-2"
             name="BookName"
             value={bookForm.BookName}
             onChange={handleFormChange}
@@ -121,7 +121,7 @@ const Home = () => {
           <input
             type="text"
             placeholder="Book Title"
-            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1  h-8 px-2"
+            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1 h-9 px-2"
             name="BookTitle"
             value={bookForm.BookTitle}
             onChange={handleFormChange}
@@ -132,7 +132,7 @@ const Home = () => {
           <input
             type="text"
             placeholder="Author"
-            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1  h-8 px-2"
+            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1 h-9 px-2"
             name="Author"
             value={bookForm.Author}
             onChange={handleFormChange}
@@ -143,7 +143,7 @@ const Home = () => {
           <input
             type="text"
             placeholder="Selling Price"
-            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1  h-8 px-2"
+            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1 h-9 px-2"
             name="SellingPrice"
             value={bookForm.SellingPrice}
             onChange={handleFormChange}
@@ -154,7 +154,7 @@ const Home = () => {
           <input
             type="date"
             placeholder="Publish Date"
-            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1  h-8 px-2"
+            className="w-full border-2 text-gray-800 border-gray-300 rounded-sm outline-1 h-9 px-2"
             name="PublishDate"
             value={bookForm.PublishDate}
             onChange={handleFormChange}
@@ -170,36 +170,31 @@ const Home = () => {
         </button>
       </div>
       <div className="w-full mt-10">
-        <div className="w-full">
-          <table className="w-full bg-white divide-y divide-gray-200">
+        <div className="w-full overflow-x-auto">
+          <table className="min-w-[900px] bg-white divide-y divide-gray-200">
             <thead className="bg-gray-100">
               <tr>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {" "}
-                  Book Name{" "}
+                  Book Name
                 </th>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {" "}
-                  Book Title{" "}
+                  Book Title
                 </th>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                   Author
                 </th>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {" "}
-                  Selling Price{" "}
+                  Selling Price
                 </th>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {" "}
-                  Publish Date{" "}
+                  Publish Date
                 </th>
                 <th className="tracking-wider px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                  {" "}
-                  Action{" "}
+                  Action
                 </th>
               </tr>
             </thead>
-            <tbody className=" bg-white divide-y divide-gray-200">
+            <tbody className="bg-white divide-y divide-gray-200">
               {bookList?.map((book, index) => {
                 return (
                   <tr className="hover:bg-gray-200" key={index}>
@@ -218,23 +213,21 @@ const Home = () => {
                     <td className="px-6 py-3 whitespace-nowrap">
                       {book.PublishDate}
                     </td>
-                    <td className="px-6 py-3 whitespace-nowrap">
-                      <div className="w-20 flex justify-center gap-5 ">
+                    <td className="px-6 py-3">
+                      <div className="w-24 flex justify-center gap-4">
                         <div
-                          className="h-8 w-8 flex justify-center items-center bg-red-100 text-red-600 rounded text-l cursor-pointer"
+                          className="h-8 w-8 flex justify-center items-center bg-red-100 text-red-600 rounded cursor-pointer"
                           onClick={() => handdleDelete(book._id)}
+                          aria-label="Delete"
                         >
-                          <span>
-                            <MdDelete />
-                          </span>
+                          <MdDelete />
                         </div>
                         <div
-                          className="h-8 w-8 flex justify-center items-center bg-green-100 text-green-600 rounded text-lg cursor-pointer"
+                          className="h-8 w-8 flex justify-center items-center bg-green-100 text-green-600 rounded cursor-pointer"
                           onClick={() => handleUpdate(book)}
+                          aria-label="Edit"
                         >
-                          <span>
-                            <FaPen />
-                          </span>
+                          <FaPen />
                         </div>
                       </div>
                     </td>
